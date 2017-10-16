@@ -1,0 +1,17 @@
+= render './header'
+.panel
+  %h1 Login
+  .form
+    = form_for :session, url: login_path, method: 'POST' do |f|
+      - if flash.present?
+        = render './flash_msg'
+      %p
+        .label='* Email'
+        .medium-4=f.text_field :email
+      %p
+        .label='* Password'
+        .medium-4=f.password_field :password
+
+      %button.submit='Sign In'
+
+

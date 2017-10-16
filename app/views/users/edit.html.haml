@@ -1,0 +1,24 @@
+= render './header'
+.panel
+  %h1 Edit User
+  .form
+    = form_for @user, method: 'PUT' do |f|
+      - if @user.errors.any?
+        - @user.errors.full_messages.each do |err|
+          #err-li= err
+      %p
+        .label='* Name'
+        .medium-4=f.text_field :name, value: @user.name
+      %p
+        .label= '* Email'
+        .medium-4=f.text_area :email, value: @user.email
+      %p
+        .label='* Password'
+        .medium-4=f.password_field :password
+      %p
+        .label='* Password Confirmation'
+        .medium-4=f.password_field :password_confirmation
+
+      %button.submit= 'Update'
+
+  %p=link_to 'Back', users_path

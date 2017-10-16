@@ -1,0 +1,16 @@
+%nav.top-bar
+  %section.top-bar-section
+    %ul.left
+      %li.active
+        =link_to 'Home', root_path
+    %ul.right
+      - if log_in?
+        %li
+          =link_to @current_user.name, @current_user
+        %li
+          =link_to 'Records', user_records_url(@current_user)
+        %li
+          =link_to 'Log out', logout_path, method: 'DELETE'
+      - else
+        %li
+          =link_to 'Sign In', login_path

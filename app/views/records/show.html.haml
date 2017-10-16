@@ -1,0 +1,40 @@
+= render './header'
+.panel
+  %h1 Record
+  - if flash.present?
+    = render './flash_msg'
+  %table
+    %thead
+      %tr
+        %th
+          Type
+        %th
+          Title
+        %th
+          Amount
+        %th
+          Description
+        %th
+          Date
+    %tbody
+      %tr
+        %td
+          = @user_record.record_type
+        %td
+          = @user_record.title
+        %td
+          = @user_record.amount
+        %td
+          = @user_record.description
+        %td
+          = @user_record.record_date
+        %td
+          =link_to 'Back ', user_records_path(@user)
+          &nbsp;&nbsp;
+          = "|"
+        %td
+          =link_to 'Edit', edit_user_record_path(@user, @user_record)
+          &nbsp;&nbsp;
+          = "|"
+        %td
+          =link_to 'Delete', delete_user_record_path(@user, @user_record), method: :delete

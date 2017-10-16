@@ -1,0 +1,23 @@
+= render './header'
+.panel
+  %h1 New User
+  .form.center
+    = form_for @user, method: 'POST' do |f|
+      - if @user.errors.any?
+        - @user.errors.full_messages.each do |err|
+          #err-li= err
+      %p
+        .label='* Name'
+        .medium-4=f.text_field :name
+      %p
+        .label= '* Email'
+        .medium-4=f.text_field :email
+      %p
+        .label='* Password'
+        .medium-4=f.password_field :password
+      %p
+        .label='* Password Confirmation'
+        .medium-4=f.password_field :password_confirmation
+
+      %button.submit='Create'
+

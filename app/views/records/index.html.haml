@@ -1,0 +1,28 @@
+= render './header'
+.panel
+  %h1 Records 
+  - if @user_records.present?
+    %table
+      %thead
+        %tr
+          %th
+            Type
+          %th
+            Title
+          %th
+            Date
+        - @user_records.each do |record|
+          %tbody
+            %tr
+              %td
+                = record.record_type
+              %td
+                = record.title
+              %td
+                = record.record_date
+              %td=link_to 'Show', user_record_url(@user, record)
+              %td=link_to 'Edit', edit_user_record_path(@user, record)
+              %td=link_to 'Delete', delete_user_record_path(@user, record), method: :delete
+  - else
+    %tr
+      %td.text-center{colspan:7} No records

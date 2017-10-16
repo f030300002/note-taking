@@ -1,0 +1,26 @@
+= render './header'
+.panel
+  %h1 Edit Record
+  .form.center
+    = form_for :record, url: update_user_record_path(@user, @user_record), method: :put do |f|
+      - if flash.present?
+        = render './flash_msg'
+      %p
+        .label='Type'
+        .medium-4=f.select :record_type, options_for_select(['衣', '食', '住', '行', '玩', 'income', 'other'], @user_record.record_type)
+      %p
+        .label= 'Title'
+        .medium-4=f.text_field :title, value: @user_record.title
+      %p
+        .label='Description'
+        .medium-4=f.text_area :description, value: @user_record.description
+      %p
+        .label='Amount'
+        .medium-4=f.text_field :amount, value: @user_record.amount
+      %p
+        .label='Date'
+        .medium-4=f.date_field :record_date, value: @user_record.record_date
+
+      %button.submit='Update'
+
+

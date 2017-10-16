@@ -2,7 +2,7 @@ development: &default
   adapter: postgresql
   host: 127.0.0.1
   port: 5432
-  database: note
+  database: note_taking
   username: tony
   pool: 12
 
@@ -10,13 +10,13 @@ production: &default
   adapter: postgresql
   host: 127.0.0.1
   port: 5432
-  database: note
+  database: note_taking
   username: tony
   pool: 12
 
 test: &test
   adapter: postgresql
-  database: note_test<%= ENV['TEST_ENV_NUMBER'] %>
+  database: note_taking_test<%= ENV['TEST_ENV_NUMBER'] %>
 
 # production:
 #   <<: *default

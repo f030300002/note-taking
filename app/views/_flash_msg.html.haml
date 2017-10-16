@@ -1,0 +1,5 @@
+- flash.each do |status, msg|
+  .row
+    .medium-9.columns.alert-box{ class: "#{status} radius", data:{ alert: '' } }
+      = msg
+      .right=link_to '&times;'.html_safe, '#', class: 'close'
