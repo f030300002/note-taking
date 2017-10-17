@@ -4,11 +4,17 @@ Rails.application.routes.draw do
 
   root to: 'dashboard#index' 
 
+  concern :paginatable do
+    get '(page/:page)', action: :index, on: :collection, as: ''
+  end
+
   resources :users do
     resources :records
   end
 
   resources :sessions
+
+  resources :records, concerns: :paginatable
 
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'

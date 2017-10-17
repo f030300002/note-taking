@@ -19,7 +19,7 @@
         .medium-4=f.text_field :amount
       %p
         .label='Date'
-        .medium-4=f.date_field :record_date
+        .medium-4=f.date_field :record_date, value: Time.now.strftime('%Y-%m-%d')
 
       %button.submit='Create'
 

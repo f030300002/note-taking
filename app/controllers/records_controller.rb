@@ -1,7 +1,8 @@
 class RecordsController < ApplicationController
 
   def index
-    @user_records = Record.where(user_id: params[:user_id])
+    @user_records = Record.where(user_id: params[:user_id]).order('created_at DESC').page params[:page]
+    #@user_records.order('created_at DESC').page(params[:page]).per(per_page)
     @user = @user_records[0].user if @user_records.present?
   end
 
