@@ -10,6 +10,8 @@
         %li
           =link_to 'Records', user_records_url(@current_user)
         %li
+          =link_to 'Create Record', new_user_record_path(@current_user)
+        %li
           =link_to 'Log out', logout_path, method: 'DELETE'
       - else
         %li

@@ -7,15 +7,27 @@
     %thead
       %tr
         %th
-          name
+          Name
         %th
-          email
+          Email
+        %th
+          Amount
+        %th
+          Assessment Date Count
     %tbody
       %tr
         %td
           = @user.name
         %td
           = @user.email
+        %td
+          #hide_wage_field
+          #wage_field= text_field_tag 'Amount', @user.amount, disabled: true
+        %td
+          = @user.assess_date_count_in_days
+          days /
+          = @user.assess_date_count_in_weeks
+          weeks
         %td
           =link_to 'Back ', root_path
           &nbsp;&nbsp;
@@ -30,3 +42,21 @@
           = "|"
         %td
           =link_to 'Create Record', new_user_record_path(@user)
+
+:javascript
+
+  $("#wage_field").hide();
+
+  $("#hide_wage_field").mouseover(
+    function(){
+      $(this).hide();
+      $("#wage_field").show();
+    }
+  );
+
+  $("#wage_field").mouseleave(
+    function(){
+      $(this).hide();
+      $("#hide_wage_field").show();
+    }
+  );

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171017045346) do
+ActiveRecord::Schema.define(version: 20171028070512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20171017045346) do
     t.string   "confirm_password"
     t.datetime "created_at",                                               null: false
     t.datetime "updated_at",                                               null: false
-    t.decimal  "wage",             precision: 8, scale: 2, default: "0.0"
+    t.decimal  "amount",           precision: 8, scale: 2, default: "0.0"
   end
 
 end

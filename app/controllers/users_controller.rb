@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(user_id)
+    @user.total_amount(user_id)
   end
 
   def edit
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :amount)
   end
 
   def user_id
