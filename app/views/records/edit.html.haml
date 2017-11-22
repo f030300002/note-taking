@@ -20,6 +20,9 @@
       %p
         .label='Date'
         .medium-4=f.date_field :record_date, value: @user_record.record_date
+      %p
+        .label='Important'
+        = f.check_box :important
 
       %button.submit='Update'
 

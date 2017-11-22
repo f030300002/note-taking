@@ -1,7 +1,11 @@
 class RecordsController < ApplicationController
 
   def index
-    @user_records = Record.where(user_id: params[:user_id]).order('record_date DESC').page params[:page]
+    if params[:important]
+      @user_records = Record.where("user_id = ? AND important = ?", params[:user_id], true).order('record_date DESC').page params[:page]
+    else
+      @user_records = Record.where(user_id: params[:user_id]).order('record_date DESC').page params[:page]
+    end
     # @user_records.order('created_at DESC').page(params[:page]).per(per_page)
     @user = @user_records[0].user if @user_records.present?
   end
@@ -60,7 +64,7 @@ class RecordsController < ApplicationController
   private
 
   def record_params
-    params.require(:record).permit(:record_type, :title, :description, :amount, :record_date)
+    params.require(:record).permit(:record_type, :title, :description, :amount, :record_date, :important)
   end
 
 end

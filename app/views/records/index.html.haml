@@ -1,6 +1,9 @@
 = render './header'
 .panel
-  %h1 Records 
+  - if params[:important]
+    %h1 Importants Records
+  - else
+    %h1 Records 
   - if @user_records.present?
     %table
       %thead
