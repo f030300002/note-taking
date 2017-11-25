@@ -1,0 +1,28 @@
+= render './header'
+.panel
+  %h1 Note
+  - if flash.present?
+    = render './flash_msg'
+  %table.table-striped
+    %thead
+      %tr
+        %th
+          Description
+        %th
+          Date
+    %tbody
+      %tr
+        %td
+          = @user_note.description
+        %td
+          = @user_note.note_date
+        %td
+          =link_to 'Back ', user_notes_path(@user)
+          &nbsp;&nbsp;
+          = "|"
+        %td
+          =link_to 'Edit', edit_user_note_path(@user, @user_note)
+          &nbsp;&nbsp;
+          = "|"
+        %td
+          =link_to 'Delete', delete_user_note_path(@user, @user_note), method: :delete

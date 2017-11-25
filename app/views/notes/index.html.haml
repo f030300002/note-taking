@@ -1,0 +1,25 @@
+= render './header'
+.panel
+  %h1 Notes 
+  - if @user_notes.present?
+    %table
+      %thead
+        %tr
+          %th
+            Description
+          %th
+            Date
+        - @user_notes.each do |note|
+          %tbody
+            %tr
+              %td
+                = note.description
+              %td
+                = note.note_date
+              %td=link_to 'Show', user_note_url(@user, note)
+              %td=link_to 'Edit', edit_user_note_path(@user, note)
+              %td=link_to 'Delete', delete_user_note_path(@user, note), method: :delete
+    = paginate @user_notes
+  - else
+    %tr
+      %td.text-center{colspan:7} No notes

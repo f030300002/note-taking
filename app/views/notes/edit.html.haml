@@ -1,0 +1,18 @@
+= render './header'
+.panel
+  %h1 Edit Note
+  .form.center
+    = form_for :note, url: user_notes_path, method: :post do |f|
+      - if flash.present?
+        = render './flash_msg'
+      %p
+        .label='Content'
+        .medium-4=f.text_area :description, value: @user_note.description
+      %p
+        .label='Date'
+        .medium-4=f.date_field :note_date, value: Time.now.strftime('%Y-%m-%d'), value: @user_note.note_date
+
+      %button.submit='Edit'
+
+
+

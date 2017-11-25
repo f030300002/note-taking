@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
   has_many :records, dependent: :destroy
+  has_many :notes, dependent: :destroy
 
   def update_amount(option, record_amount, record_type, user_id)
     cur_user = self.class.where(id: user_id).first

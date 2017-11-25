@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :records
+    resources :notes
   end
 
   resources :sessions
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   put '/users/:user_id/records/:id', to: 'records#update', as: :update_user_record
   delete '/users/:user_id/records/:id', to: 'records#destroy', as: :delete_user_record
+  delete '/users/:user_id/notes/:id', to: 'notes#destroy', as: :delete_user_note
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

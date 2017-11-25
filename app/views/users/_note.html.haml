@@ -1,0 +1,22 @@
+%h1 Notes 
+- if @user.notes.present?
+  %table
+    %thead
+      %tr
+        %th
+          Description
+        %th
+          Date
+      - @user.notes.each do |note|
+        %tbody
+          %tr
+            %td
+              = note.description
+            %td
+              = note.note_date
+            %td=link_to 'Show', user_note_url(@user, note)
+            %td=link_to 'Edit', edit_user_note_path(@user, note)
+            %td=link_to 'Delete', delete_user_note_path(@user, note), method: :delete
+- else
+  %tr
+    %td.text-center{colspan:7} No notes

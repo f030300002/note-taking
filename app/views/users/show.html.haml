@@ -3,45 +3,11 @@
   %h1 User
   - if flash.present?
     = render './flash_msg'
-  %table
-    %thead
-      %tr
-        %th
-          Name
-        %th
-          Email
-        %th
-          Amount
-        %th
-          Assessment Date Count
-    %tbody
-      %tr
-        %td
-          = @user.name
-        %td
-          = @user.email
-        %td
-          #hide_wage_field
-          #wage_field= text_field_tag 'Amount', @user.amount, disabled: true
-        %td
-          = @user.assess_date_count_in_days
-          days /
-          = @user.assess_date_count_in_weeks
-          weeks
-        %td
-          =link_to 'Back ', root_path
-          &nbsp;&nbsp;
-          = "|"
-        %td
-          =link_to 'Edit', edit_user_path(@user)
-          &nbsp;&nbsp;
-          = "|"
-        %td
-          =link_to 'Delete', user_path(@user), method: :delete
-          &nbsp;&nbsp;
-          = "|"
-        %td
-          =link_to 'Create Record', new_user_record_path(@user)
+  = render 'user'
+  %br
+  = render 'note'
+
+
 
 :javascript
 

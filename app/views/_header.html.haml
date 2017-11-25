@@ -8,6 +8,8 @@
         %li
           =link_to @current_user.name, @current_user
         %li
+          =link_to 'Notes', user_notes_url(@current_user)
+        %li
           =link_to 'Records', user_records_url(@current_user)
         %li
           =link_to 'Important Records', user_records_url(@current_user, important: true)

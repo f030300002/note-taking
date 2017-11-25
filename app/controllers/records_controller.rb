@@ -17,7 +17,7 @@ class RecordsController < ApplicationController
 
   def create
     @user = User.find_by(id: params[:user_id])
-    @user_record = @user.records.build user_id: params[:user_id], record_type: params[:record][:record_type], title: params[:record][:title], amount: params[:record][:amount], description: params[:record][:description], record_date: params[:record][:record_date]
+    @user_record = @user.records.build record_params
     if @user_record.save
       flash.now[:success] = 'create user record succeed!'
       @user.update_amount('create', @user_record.amount, @user_record.record_type, @user.id)
@@ -57,7 +57,7 @@ class RecordsController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     @user.update_amount('delete', @user.records.find(params[:id]).amount, @user.records.find(params[:id]).record_type, @user.id)
     @user.records.find(params[:id]).destroy
-    flash.now[:success] = 'delete user succeed!'
+    flash.now[:success] = 'delete user record succeed!'
     redirect_to user_records_path(@user)
   end
 
